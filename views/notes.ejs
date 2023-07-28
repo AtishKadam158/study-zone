@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Notes - <%= subject %></title>
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+  <h1><%= subject %></h1>
+  <div class="notes-container">
+    <h2>Notes:</h2>
+    <ul>
+      <% notes.forEach(note => { %>
+        <% if (note.isHeading) { %>
+          <li><strong><%= note.content %></strong></li>
+        <% } else { %>
+          <li><%= note.content %></li>
+        <% } %>
+      <% }); %>
+    </ul>
+    <form action="/addNotes/<%= subject %>" method="post">
+      <label for="note">Add Note:</label>
+      <input type="text" id="note" name="note" required>
+      <button type="submit">Add as Note</button>
+      <button type="submit" name="heading" value="true">Add as Heading</button>
+    </form>
+  </div>
+</body>
+</html>

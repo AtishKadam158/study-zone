@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+  <h1><%= title %></h1>
+  <form action="/addSubject" method="post">
+    <label for="subject">Add Subject:</label>
+    <input type="text" id="subject" name="subject" required>
+    <button type="submit">Add</button>
+  </form>
+
+  <ul>
+    <% subjects.forEach(subject => { %>
+      <li>
+        <a href="/notes/<%= subject %>"><%= subject %></a>
+      </li>
+    <% }); %>
+  </ul>
+</body>
+</html>
